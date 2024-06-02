@@ -1,0 +1,7 @@
+guess,result
+papal,0 2 0 0 0
+cacti,0 2 0 0 0
+bauds,0 2 0 0 0
+ragee,1 2 0 0 0
+marry,2 2 1 0 0
+manor,2 2 0 2 2

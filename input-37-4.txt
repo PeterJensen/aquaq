@@ -1,0 +1,9 @@
+guess,result
+sooth,1 0 0 0 0
+jakes,0 2 2 2 2
+wakes,0 2 2 2 2
+bakes,0 2 2 2 2
+lakes,0 2 2 2 2
+makes,0 2 2 2 2
+fakes,0 2 2 2 2
+rakes,0 2 2 2 2

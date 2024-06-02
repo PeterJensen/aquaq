@@ -1,0 +1,3 @@
+guess,result
+tarty,1 0 1 0 0
+citer,0 2 1 0 1
