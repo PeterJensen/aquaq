@@ -6,8 +6,8 @@ class QueueElem:
   def __init__(self, node, prio):
     self.node = node
     self.prio = prio
-  def print(self):
-    print(f"{self.node}: {self.prio}")
+  def __repr__(self):
+    return f"{self.node}: {self.prio}"
 
 class Queue:
   def __init__(self):
@@ -24,7 +24,7 @@ class Queue:
         #if ei != 0:
         #  print(f"addWithPriority: {ei}")
         return
-    self.queue.insert(ei, elem)
+    self.queue.append(elem)
   def extractMin(self):
     elem = self.queue.pop()
     self.elems.remove(elem.node)
@@ -38,9 +38,9 @@ class Queue:
       if e.node == node:
         e.prio = prio
         break
-  def print(self):
-    for e in self.queue:
-      e.print()
+    self.queue.sort(key = lambda e: e.prio, reverse = True)
+  def __repr__(self):
+    return f"{self.queue}"
 
 def shortest(start, end):
   dist = defaultdict(lambda: 999999999)
@@ -49,7 +49,14 @@ def shortest(start, end):
   queue = Queue()
   queue.addWithPriority(QueueElem(start, dist[start]))
   qLen = 1000
+  hasDistTo = hasattr(start, "distTo") and callable(start.distTo)
+  def distBetween(s, d):
+    if hasDistTo:
+      return s.distTo(d)
+    else:
+      return 1
   while not queue.isEmpty():
+#    print(f"queue: {queue}")
     if len(queue.queue) > qLen:
 #      print(f"Queue Length: {len(queue.queue)}")
       #queue.print()
@@ -57,12 +64,13 @@ def shortest(start, end):
 #      print("Minimum Elem:")
 #      queue.queue[-1].print()
     u = queue.extractMin()
+#    print(f"queue.extractMin: {u}")
     if u.node.match(end):
       return dist, prev
     numNeighbors = 0
     for v in u.node.neighbors():
       numNeighbors += 1
-      alt = dist[u.node] + 1
+      alt = dist[u.node] + distBetween(u.node, v)
       if alt < dist[v]:
         dist[v] = alt
         prev[v] = u.node
