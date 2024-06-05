@@ -7,7 +7,7 @@ from threading import Thread
 from multiprocessing import Process, Queue
 
 class Config:
-  title = "--- Challenge 15:  ---"
+  title = "--- Challenge 15: word wore more mare maze ---"
   input = "input-15.txt"
   words = "words.txt"
 
