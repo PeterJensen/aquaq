@@ -103,22 +103,19 @@ class Cube:
       edges[2] = e3
       edges[3] = e0[::-1]
   def getRowOrCol(self, code):
-    srf, rc, rci = code[0], code[1], int(code[2])
-    if rc == "R":
-      return self.getRow(srf, rci)
-    elif rc == 'r':
-      return self.getRow(srf, rci)[::-1]
-    elif rc == "C":
-      return self.getCol(srf, rci)
-    elif rc == "c":
-      return self.getCol(srf, rci)[::-1]
+    srf, roc, rci = code[0], code[1], int(code[2])
+    if roc in "rR":
+      rc = self.getRow(srf, rci)
     else:
-      print(f"ERROR: getRowOrCol - unexpected code: {code}")
-  def setRowOrCol(self, code, rc):
-    srf, c, rci = code[0], code[1], int(code[2])
-    if c in "rc":
+      rc = self.getCol(srf, rci)
+    if roc in "rc":
       rc = rc[::-1]
-    if c in "rR":
+    return rc
+  def setRowOrCol(self, code, rc):
+    srf, roc, rci = code[0], code[1], int(code[2])
+    if roc in "rc":
+      rc = rc[::-1]
+    if roc in "rR":
       self.setRow(srf, rci, rc)
     else:
       self.setCol(srf, rci, rc)
