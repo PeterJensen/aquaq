@@ -119,9 +119,7 @@ def solve(lines):
 #  print(decode([0, 3, 6, 7, 8, 9, 10, 11, 12, 13, 16, 17, 24, 25, 26, 27, 28, 31, 32, 33, 36, 37, 38, 39, 42, 45, 46, 47, 50, 51, 52, 55, 58, 59, 60, 63, 64, 65, 66, 67]))
   for m in messages(lines, diffsMap):
     print(decode(m))
-  return
-
-  print("Solution: ")
+  print("Solution: paris")
 
 def main():
   print(Config.title)
