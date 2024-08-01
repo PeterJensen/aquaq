@@ -3,7 +3,7 @@
 import sys
 
 class Config:
-  title = "--- Challenge 29:  ---"
+  title = "--- Challenge 29: On the up and up ---"
   input = "input-29.txt"
 
 def getLines():
